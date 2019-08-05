@@ -1,0 +1,11 @@
+{
+  "emeraldwalk.runonsave": {
+    "autoClearConsole": true,
+    "commands": [
+      {
+        "match": "graphql\\/src\\/schemas\\/.*\\.graphql$",
+        "cmd": "cd ${workspaceRoot}/graphql && npm run generate"
+      },
+    ]
+  }
+}

@@ -1,0 +1,3 @@
+# import Query.* from 'author.graphql'
+# import Query.* from 'book.graphql'
+

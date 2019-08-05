@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  graphql:
+    build: ./graphql
+    container_name: mngrka-graphql
+    restart: on-failure
+    environment:
+      NODE_ENV: development
+      KOA_API_URL: http://backend:8765
+    ports:
+      - '4000:4000'
+    volumes:
+      - ./graphql-server:/home/node/app
+      - /home/node/app/node_modules
+  api:
+    build: ./api
+    container_name: mngrka-api
+    restart: on-failure
+    environment: 
+      NODE_ENV: development
+      MONGODB_URI: mongodb://database:27017/mngrka
+      PORT: 8765
+    depends_on:
+      - database
+    ports:
+      - '8765:8765'
+    volumes: 
+      - ./backend:/home/node/app
+      - /home/node/app/node_modules
+  database:
+    image: mongo
+    container_name: mngrka-db
+    restart: on-failure
+    ports:
+      - '27017:27017'
+    volumes:
+      - data-volume:/data/db
+
+volumes:
+  data-volume:
