@@ -1,0 +1,25 @@
+{
+  "name": "mngrka",
+  "private": true,
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "husky": "^3.0.2",
+    "lint-staged": "^9.2.1",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./**/*.{ts,tsx}": [
+      "prettier --write",
+      "eslint",
+      "git add"
+    ]
+  }
+}
