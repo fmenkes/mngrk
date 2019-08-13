@@ -1,6 +1,25 @@
 version: '3.7'
 
 services:
+  client:
+    build:
+      context: ./client
+      dockerfile: development.Dockerfile
+    command: npm start -- --host=0.0.0.0
+    container_name: mngrka-client
+    restart: on-failure
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - REACT_APP_GRAPHQL_URI=http://graphql:4000
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./node_modules:/usr/src/node_modules
+      - .eslintrc.yaml:/usr/src/.eslintrc.yaml
+      - .prettierrc.yaml:/usr/src/.prettierrc.yaml
+      - ./client:/usr/src/app
+      - /usr/src/app/node_modules
   graphql:
     build: ./graphql
     container_name: mngrka-graphql
@@ -11,7 +30,7 @@ services:
     ports:
       - '4000:4000'
     volumes:
-      - ./graphql-server:/home/node/app
+      - ./graphql:/home/node/app
       - /home/node/app/node_modules
   api:
     build: ./api
@@ -26,7 +45,7 @@ services:
     ports:
       - '8765:8765'
     volumes: 
-      - ./backend:/home/node/app
+      - ./api:/home/node/app
       - /home/node/app/node_modules
   database:
     image: mongo

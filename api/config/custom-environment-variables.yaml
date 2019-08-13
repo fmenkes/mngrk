@@ -1,0 +1,4 @@
+mongoose:
+  uri: MONGODB_URI
+koa:
+  port: PORT

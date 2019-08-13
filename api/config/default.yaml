@@ -1,0 +1,6 @@
+mongoose:
+  options:
+    useNewUrlParser: "true"
+    useCreateIndex: "true"
+koa:
+  port: 8000
