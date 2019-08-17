@@ -19,9 +19,27 @@ export type Book = {
   id: Scalars['ID'];
   title: Scalars['String'];
   genre?: Maybe<Scalars['String']>;
-  isbn: Scalars['String'];
+  publicationYear?: Maybe<Scalars['Int']>;
   pages?: Maybe<Scalars['Int']>;
   author?: Maybe<Author>;
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  createAuthor?: Maybe<Author>;
+  createBook?: Maybe<Book>;
+};
+
+export type MutationCreateAuthorArgs = {
+  name: Scalars['String'];
+};
+
+export type MutationCreateBookArgs = {
+  title: Scalars['String'];
+  genre?: Maybe<Scalars['String']>;
+  publicationYear?: Maybe<Scalars['Int']>;
+  pages?: Maybe<Scalars['Int']>;
+  author: Scalars['ID'];
 };
 
 export type Query = {
@@ -119,6 +137,7 @@ export type ResolversTypes = ResolversObject<{
   String: ResolverTypeWrapper<Scalars['String']>;
   Book: ResolverTypeWrapper<Book>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
+  Mutation: ResolverTypeWrapper<{}>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 }>;
 
@@ -130,6 +149,7 @@ export type ResolversParentTypes = ResolversObject<{
   String: Scalars['String'];
   Book: Book;
   Int: Scalars['Int'];
+  Mutation: {};
   Boolean: Scalars['Boolean'];
 }>;
 
@@ -147,9 +167,31 @@ export type BookResolvers<
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   genre?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  isbn?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  publicationYear?: Resolver<
+    Maybe<ResolversTypes['Int']>,
+    ParentType,
+    ContextType
+  >;
   pages?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   author?: Resolver<Maybe<ResolversTypes['Author']>, ParentType, ContextType>;
+}>;
+
+export type MutationResolvers<
+  ContextType = any,
+  ParentType = ResolversParentTypes['Mutation']
+> = ResolversObject<{
+  createAuthor?: Resolver<
+    Maybe<ResolversTypes['Author']>,
+    ParentType,
+    ContextType,
+    MutationCreateAuthorArgs
+  >;
+  createBook?: Resolver<
+    Maybe<ResolversTypes['Book']>,
+    ParentType,
+    ContextType,
+    MutationCreateBookArgs
+  >;
 }>;
 
 export type QueryResolvers<
@@ -183,6 +225,7 @@ export type QueryResolvers<
 export type Resolvers<ContextType = any> = ResolversObject<{
   Author?: AuthorResolvers<ContextType>;
   Book?: BookResolvers<ContextType>;
+  Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 }>;
 

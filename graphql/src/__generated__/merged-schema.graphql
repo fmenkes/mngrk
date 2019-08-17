@@ -6,9 +6,20 @@ type Book {
   id: ID!
   title: String!
   genre: String
-  isbn: String!
+  publicationYear: Int
   pages: Int
   author: Author
+}
+
+type Mutation {
+  createAuthor(name: String!): Author
+  createBook(
+    title: String!
+    genre: String
+    publicationYear: Int
+    pages: Int
+    author: ID!
+  ): Book
 }
 
 type Query {

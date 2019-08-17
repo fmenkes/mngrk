@@ -3,6 +3,10 @@ type Query {
   authors: [Author]
 }
 
+type Mutation {
+  createAuthor(name: String!): Author
+}
+
 type Author {
   name: String!
 }

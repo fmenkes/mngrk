@@ -4,6 +4,8 @@ import { ParameterizedContext } from 'koa';
 import { combineRouters } from '../utils/routes';
 
 import pingRouter from './ping';
+import authorRouter from './author';
+import bookRouter from './book';
 
 const indexRouter = new Router();
 
@@ -13,6 +15,11 @@ indexRouter.get('/', async (ctx: ParameterizedContext) => {
   };
 });
 
-const router = combineRouters([indexRouter, pingRouter]);
+const router = combineRouters([
+  indexRouter,
+  pingRouter,
+  authorRouter,
+  bookRouter,
+]);
 
 export default router;

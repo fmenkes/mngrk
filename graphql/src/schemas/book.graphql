@@ -5,11 +5,21 @@ type Query {
   books: [Book]
 }
 
+type Mutation {
+  createBook(
+    title: String!
+    genre: String
+    publicationYear: Int
+    pages: Int
+    author: ID!
+  ): Book
+}
+
 type Book {
   id: ID!
   title: String!
   genre: String
-  isbn: String!
+  publicationYear: Int
   pages: Int
   author: Author
 }

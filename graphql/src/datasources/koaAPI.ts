@@ -4,10 +4,26 @@ import { Book, Author } from '../__generated__/types';
 
 const { url } = config.get('koaAPI');
 
+interface CreateBook {
+  title: string;
+  genre?: string;
+  publicationYear: number;
+  pages: number;
+  author: string;
+}
+
 class KoaAPI extends RESTDataSource {
   public constructor() {
     super();
     this.baseURL = url;
+  }
+
+  public async createBook(params: CreateBook) {
+    const response = await this.post('/books', params);
+
+    const { data } = response;
+
+    return data.book;
   }
 
   public async book(id: string): Promise<Book> {
@@ -15,15 +31,27 @@ class KoaAPI extends RESTDataSource {
 
     const { data } = response;
 
-    return data;
+    return data.book;
   }
 
   public async books(): Promise<[Book]> {
     const response = await this.get('/books');
 
+    console.log(response);
+
     const { data } = response;
 
-    return data;
+    return data.books;
+  }
+
+  public async createAuthor(name: string): Promise<Author> {
+    const response = await this.post('/authors', {
+      name,
+    });
+
+    const { data } = response;
+
+    return data.author;
   }
 
   public async author(id: string): Promise<Author> {
@@ -31,7 +59,7 @@ class KoaAPI extends RESTDataSource {
 
     const { data } = response;
 
-    return data;
+    return data.author;
   }
 
   public async authors(): Promise<[Author]> {
@@ -39,7 +67,7 @@ class KoaAPI extends RESTDataSource {
 
     const { data } = response;
 
-    return data;
+    return data.authors;
   }
 }
 

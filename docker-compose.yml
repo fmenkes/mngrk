@@ -26,7 +26,7 @@ services:
     restart: on-failure
     environment:
       NODE_ENV: development
-      KOA_API_URL: http://backend:8765
+      KOA_API_URL: http://api:8765
     ports:
       - '4000:4000'
     volumes:
