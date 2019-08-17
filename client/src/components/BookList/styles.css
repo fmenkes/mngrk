@@ -1,0 +1,30 @@
+.bookListHeader {
+  width: 75%;
+}
+
+.bookListItem {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+}
+
+.bookListItem > div {
+  width: 100%;
+  height: 35px;
+  text-align: center;
+}
+
+.bookListItem > div > span,strong {
+  line-height: 35px;
+  white-space: nowrap;
+}
+
+@media only screen and (max-width: 600px) {
+  .bookListItem > div > span,strong {
+    font-size: 0.675em;
+  }
+
+  .bookListItem > div > span > img {
+    width: 12px;
+  }
+}

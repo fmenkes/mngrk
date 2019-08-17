@@ -8,5 +8,6 @@ type Mutation {
 }
 
 type Author {
+  id: ID!
   name: String!
 }

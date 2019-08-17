@@ -37,8 +37,6 @@ class KoaAPI extends RESTDataSource {
   public async books(): Promise<[Book]> {
     const response = await this.get('/books');
 
-    console.log(response);
-
     const { data } = response;
 
     return data.books;

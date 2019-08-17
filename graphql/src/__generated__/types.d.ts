@@ -11,6 +11,7 @@ export type Scalars = {
 
 export type Author = {
   __typename?: 'Author';
+  id: Scalars['ID'];
   name: Scalars['String'];
 };
 
@@ -157,6 +158,7 @@ export type AuthorResolvers<
   ContextType = any,
   ParentType = ResolversParentTypes['Author']
 > = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 }>;
 
