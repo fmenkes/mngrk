@@ -4,7 +4,7 @@
   "description": "Koa API for mngrka boilerplate",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "webpack",
     "start": "node dist/bundle.js",
     "dev": "nodemon --watch 'src/**/*' -e ts,tsx,graphql --exec ts-node ./src/index.ts"
@@ -32,19 +32,40 @@
   },
   "devDependencies": {
     "@types/config": "0.0.34",
+    "@types/jest": "^24.0.17",
     "@types/koa": "^2.0.49",
     "@types/koa-bodyparser": "^4.3.0",
     "@types/koa-compose": "^3.2.4",
     "@types/koa-router": "^7.0.42",
     "@types/koa__cors": "^2.2.3",
     "@types/mongoose": "^5.5.12",
+    "@types/supertest": "^2.0.8",
     "clean-webpack-plugin": "^3.0.0",
+    "jest": "^24.9.0",
     "nodemon": "^1.19.1",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.0.2",
     "ts-loader": "^6.0.4",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-node-externals": "^1.7.2"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.ts"
+    ],
+    "collectCoverageFrom": [
+      "**/*.ts",
+      "!**/node_modules/**"
+    ]
   }
 }

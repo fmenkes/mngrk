@@ -30,7 +30,7 @@ const BookSchema = new Schema(
   },
 );
 
-// Convert _id to id field when returning doc in JSON form
+// Convert _id to id field when returning doc in JSON format
 BookSchema.set('toJSON', {
   virtuals: true,
 });

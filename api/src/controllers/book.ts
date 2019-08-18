@@ -8,13 +8,10 @@ export const create = async (
 ) => {
   const params = ctx.request.body;
 
-  console.log(params);
-
   try {
     const author = await Author.findById(params.author);
     const book = await Book.create({ author, ...params });
     book.author = author;
-    console.log(book);
     ctx.body = {
       data: {
         book,
@@ -32,23 +29,23 @@ export const findById = async (
   next: () => Promise<any>,
 ) => {
   const { id } = ctx.params;
-  console.log(id);
+
+  let book;
 
   try {
-    const book = await Book.findById(id).populate('author');
-
-    if (!book) {
-      ctx.throw(404);
-    }
-
-    ctx.body = {
-      data: {
-        book,
-      },
-    };
+    book = await Book.findById(id).populate('author');
   } catch (e) {
+    console.log(e);
     ctx.throw('findbyid error');
   }
+  if (!book) {
+    ctx.throw(404);
+  }
+  ctx.body = {
+    data: {
+      book,
+    },
+  };
 
   await next();
 };

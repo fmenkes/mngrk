@@ -26,22 +26,23 @@ export const findById = async (
   next: () => Promise<any>,
 ) => {
   const { id } = ctx.params;
+  let author;
 
   try {
-    const author = await Author.findById(id);
-
-    if (!author) {
-      ctx.throw(404);
-    }
-
-    ctx.body = {
-      data: {
-        author,
-      },
-    };
+    author = await Author.findById(id);
   } catch {
     ctx.throw('findbyid error');
   }
+
+  if (!author) {
+    ctx.throw(404);
+  }
+
+  ctx.body = {
+    data: {
+      author,
+    },
+  };
 
   await next();
 };

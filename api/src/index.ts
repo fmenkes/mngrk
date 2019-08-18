@@ -20,6 +20,7 @@ app.use(bodyParser());
 app.use(router());
 
 const server = app.listen(port, () => {
+  /* istanbul ignore next */
   if (process.env.NODE_ENV !== 'test') {
     console.log(`Server listening on ${port}`);
   }
