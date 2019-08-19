@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`server starts up correctly 1`] = `
+Object {
+  "data": Object {
+    "__schema": Object {
+      "mutationType": Object {
+        "description": "",
+        "name": "Mutation",
+      },
+      "queryType": Object {
+        "description": "",
+        "name": "Query",
+      },
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

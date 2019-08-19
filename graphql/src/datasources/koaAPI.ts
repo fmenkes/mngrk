@@ -4,7 +4,7 @@ import { Book, Author } from '../__generated__/types';
 
 const { url } = config.get('koaAPI');
 
-interface CreateBook {
+export interface CreateBook {
   title: string;
   genre?: string;
   publicationYear: number;
@@ -18,7 +18,7 @@ class KoaAPI extends RESTDataSource {
     this.baseURL = url;
   }
 
-  public async createBook(params: CreateBook) {
+  public async createBook(params: CreateBook): Promise<Book> {
     const response = await this.post('/books', params);
 
     const { data } = response;

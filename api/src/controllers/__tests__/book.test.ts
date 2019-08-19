@@ -25,23 +25,6 @@ const bookParams = {
   author: '12345',
 };
 
-// const BookFindMock = jest.spyOn(Book, 'find');
-// const BookFindByIdMock = jest.spyOn(Book, 'findById');
-// const BookFindPopulateResult = [populatedBook];
-// const BookFindByIdPopulateResult = populatedBook;
-// const BookFindPopulate = jest.fn(() => BookFindPopulateResult);
-// const BookFindByIdPopulate = jest.fn(() => BookFindByIdPopulateResult);
-// const BookFindResult = {
-//   populate: BookFindPopulate,
-// };
-// const BookFindByIdResult = {
-//   populate: BookFindByIdPopulate,
-// };
-// const BookFind = jest.fn(() => BookFindResult);
-// const BookFindById = jest.fn(() => BookFindByIdResult);
-// BookFindMock.mockImplementation(BookFind as any);
-// BookFindByIdMock.mockImplementation(BookFindById as any);
-
 describe('book', () => {
   it('create should respond as expected', async () => {
     mockedBook.create.mockResolvedValue(bookParams as BookInterface);

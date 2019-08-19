@@ -1,2 +1,4 @@
 mongoose:
   uri: mongodb://localhost:27017/test
+koa:
+  port: 8111
