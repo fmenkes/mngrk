@@ -1,5 +1,7 @@
 FROM node:8.16.0-alpine
 
+RUN npm i -g concurrently onchange
+
 # Set home directory env variable and switch to node user, so we don't
 # run as root
 ENV HOME=/home/node

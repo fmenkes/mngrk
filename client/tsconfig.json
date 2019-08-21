@@ -17,9 +17,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "types": ["jest"]
   },
   "include": [
-    "src"
+    "src",
+    "__mocks__"
   ]
 }

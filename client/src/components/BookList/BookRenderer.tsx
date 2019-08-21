@@ -5,7 +5,7 @@ interface Author {
   name: string;
 }
 
-interface Book {
+export interface Book {
   title: string;
   author: Author;
   genre?: string;

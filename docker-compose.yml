@@ -5,7 +5,7 @@ services:
     build:
       context: ./client
       dockerfile: development.Dockerfile
-    command: npm start -- --host=0.0.0.0
+    command: concurrently "npm start -- --host=0.0.0.0" "onchange -v package-lock.json -- npm i --no-shrinkwrap"
     container_name: mngrka-client
     restart: on-failure
     environment:

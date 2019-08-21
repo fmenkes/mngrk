@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Query, QueryResult } from 'react-apollo';
 import gql from 'graphql-tag';
-import { FixedSizeList as List } from 'react-window';
+import { FixedSizeList } from 'react-window';
 import BookRenderer from './BookRenderer';
 import BookListHeader from './BookListHeader';
 
@@ -28,7 +28,7 @@ const BookList = () => (
       return (
         <Fragment>
           <BookListHeader />
-          <List
+          <FixedSizeList
             height={800}
             itemCount={data.books.length}
             itemSize={35}
@@ -36,7 +36,7 @@ const BookList = () => (
             itemData={data.books}
           >
             {BookRenderer}
-          </List>
+          </FixedSizeList>
         </Fragment>
       );
     }}

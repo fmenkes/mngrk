@@ -1,1 +1,4 @@
-export default typeof window.env === 'string' ? process.env : window.env;
+export default typeof window.env === 'string' ||
+typeof window.env === 'undefined'
+  ? process.env
+  : window.env;
