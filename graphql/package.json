@@ -8,7 +8,8 @@
     "generate": "graphql-codegen",
     "dev": "nodemon --watch 'src/**/*' -e ts,tsx,graphql --exec ts-node ./src/index.ts",
     "start": "node dist/bundle.js",
-    "build": "webpack"
+    "build": "webpack",
+    "codecov": "codecov"
   },
   "author": "fmenkes",
   "dependencies": {
