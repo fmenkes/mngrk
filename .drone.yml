@@ -42,7 +42,7 @@ steps:
     - if ../scripts/shouldNotRun.sh; then exit 0; fi
     - npm install
     - npm test -- --coverage
-    - npm run coverage
+    - npm run codecov
 
 services:
   - name: database
