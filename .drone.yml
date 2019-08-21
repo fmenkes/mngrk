@@ -53,5 +53,3 @@ trigger:
   - develop
   - master
   - greenkeeper/*
-  event:
-  - push
