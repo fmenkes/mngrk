@@ -52,5 +52,6 @@ trigger:
   branch:
   - develop
   - master
+  - greenkeeper/*
   event:
   - push
