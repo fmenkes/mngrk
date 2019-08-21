@@ -11,6 +11,8 @@ steps:
   image: node:10.16.3
   environment:
     MONGODB_URI: mongodb://database:27017/db
+    CODECOV_TOKEN:
+      from_secret: codecov_token
   commands:
     - cd api
     - if ../scripts/shouldNotRun.sh; then exit 0; fi
@@ -20,19 +22,27 @@ steps:
 - name: client
   depends_on: [detect-changed-folders]
   image: node:10.16.3
+  environment:
+    CODECOV_TOKEN:
+      from_secret: codecov_token
   commands:
     - cd client
     - if ../scripts/shouldNotRun.sh; then exit 0; fi
     - npm install
     - npm test -- --coverage
+    - npm run codecov
 - name: graphql-server
   depends_on: [detect-changed-folders]
   image: node:10.16.3
+  environment:
+    CODECOV_TOKEN:
+      from_secret: codecov_token
   commands:
     - cd graphql
     - if ../scripts/shouldNotRun.sh; then exit 0; fi
     - npm install
     - npm test -- --coverage
+    - npm run coverage
 
 services:
   - name: database
