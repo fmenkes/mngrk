@@ -16,6 +16,7 @@ steps:
     - if ../scripts/shouldNotRun.sh; then exit 0; fi
     - npm install
     - npm test -- --coverage --run-in-band
+    - npm run codecov
 - name: client
   depends_on: [detect-changed-folders]
   image: node:10.16.3
@@ -32,39 +33,6 @@ steps:
     - if ../scripts/shouldNotRun.sh; then exit 0; fi
     - npm install
     - npm test -- --coverage
-- name: api-codecov
-  image: plugins/codecov
-  settings:
-    token:
-      from_secret: codecov_token
-    files:
-      - "*.xml"
-    paths:
-      - api/coverage
-    flags:
-      - api
-- name: graphql-codecov
-  image: plugins/codecov
-  settings:
-    token:
-      from_secret: codecov_token
-    files:
-      - "*.xml"
-    paths:
-      - graphql/coverage
-    flags:
-      - graphql
-- name: client-codecov
-  image: plugins/codecov
-  settings:
-    token:
-      from_secret: codecov_token
-    files:
-      - "*.xml"
-    paths:
-      - client/coverage
-    flags:
-      - client
 
 services:
   - name: database
