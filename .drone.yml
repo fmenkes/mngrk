@@ -18,7 +18,7 @@ steps:
     - if ../scripts/shouldNotRun.sh; then exit 0; fi
     - npm install
     - npm test -- --coverage --run-in-band
-    - npm run codecov
+    - npm run codecov -- -F api
 - name: client
   depends_on: [detect-changed-folders]
   image: node:10.16.3
@@ -30,8 +30,8 @@ steps:
     - if ../scripts/shouldNotRun.sh; then exit 0; fi
     - npm install
     - npm test -- --coverage
-    - npm run codecov
-- name: graphql-server
+    - npm run codecov -- -F client
+- name: graphql
   depends_on: [detect-changed-folders]
   image: node:10.16.3
   environment:
@@ -42,7 +42,7 @@ steps:
     - if ../scripts/shouldNotRun.sh; then exit 0; fi
     - npm install
     - npm test -- --coverage
-    - npm run codecov
+    - npm run codecov -- -F graphql
 
 services:
   - name: database

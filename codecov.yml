@@ -11,7 +11,7 @@ coverage:
         flags: graphql
         target: 90%
       client:
-        flags: graphql
+        flags: client
         target: 90%
 flags:
   client:
