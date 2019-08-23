@@ -26,7 +26,7 @@ steps:
     - npm ci
     - npm test -- --coverage
 - name: codecov
-  image: spotify/alpine
+  image: buildpack-deps
   depends_on:
     - api
     - client
