@@ -7,35 +7,37 @@ steps:
   depends_on: [clone]
   environment:
     MONGODB_URI: mongodb://database:27017/db
-    CODECOV_TOKEN:
-      from_secret: codecov_token
   commands:
     - cd api
     - npm ci
     - npm test -- --coverage --run-in-band
-    - npm run codecov
 - name: client
   image: node:10.16.3
   depends_on: [clone]
-  environment:
-    CODECOV_TOKEN:
-      from_secret: codecov_token
   commands:
     - cd client
     - npm ci
     - npm test -- --coverage
-    - npm run codecov
 - name: graphql
   image: node:10.16.3
   depends_on: [clone]
-  environment:
-    CODECOV_TOKEN:
-      from_secret: codecov_token
   commands:
     - cd graphql
     - npm ci
     - npm test -- --coverage
-    - npm run codecov
+- name: codecov
+  image: spotify/alpine
+  depends_on:
+    - api
+    - client
+    - graphql
+  environment:
+    CODECOV_TOKEN:
+      from_secret: codecov_token
+  commands:
+    - bash <(curl https://codecov.io/bash) -f "api/coverage/*" -F api
+    - bash <(curl https://codecov.io/bash) -f "client/coverage/*" -F client
+    - bash <(curl https://codecov.io/bash) -f "api/coverage/*" -F graphql
 
 services:
   - name: database
