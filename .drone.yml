@@ -35,9 +35,9 @@ steps:
     CODECOV_TOKEN:
       from_secret: codecov_token
   commands:
-    - bash <(curl https://codecov.io/bash) -f "api/coverage/*" -F api
-    - bash <(curl https://codecov.io/bash) -f "client/coverage/*" -F client
-    - bash <(curl https://codecov.io/bash) -f "api/coverage/*" -F graphql
+    - bash -c "bash <(curl https://codecov.io/bash) -f "api/coverage/*" -F api"
+    - bash -c "bash <(curl https://codecov.io/bash) -f "client/coverage/*" -F client"
+    - bash -c "bash <(curl https://codecov.io/bash) -f "api/coverage/*" -F graphql"
 
 services:
   - name: database
