@@ -20,7 +20,7 @@
     "dev": "nodemon --watch 'src/**/*' -e ts,tsx,graphql --exec ts-node ./src/index.ts",
     "start": "node dist/bundle.js",
     "build": "webpack",
-    "codecov": "codecov -F graphql"
+    "codecov": "codecov"
   },
   "dependencies": {
     "apollo-datasource": "^0.6.1",
