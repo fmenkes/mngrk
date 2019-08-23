@@ -2,12 +2,7 @@ kind: pipeline
 name: main
 
 steps:
-- name: detect-changed-folders
-  image: fmenkes/alpine-git
-  commands:
-    - scripts/detectChangedFolders.sh
 - name: api
-  depends_on: [detect-changed-folders]
   image: node:10.16.3
   environment:
     MONGODB_URI: mongodb://database:27017/db
@@ -15,34 +10,29 @@ steps:
       from_secret: codecov_token
   commands:
     - cd api
-    - if ../scripts/shouldNotRun.sh; then exit 0; fi
-    - npm install
+    - npm ci
     - npm test -- --coverage --run-in-band
-    - npm run codecov -- -F api
+    - npm run codecov
 - name: client
-  depends_on: [detect-changed-folders]
   image: node:10.16.3
   environment:
     CODECOV_TOKEN:
       from_secret: codecov_token
   commands:
     - cd client
-    - if ../scripts/shouldNotRun.sh; then exit 0; fi
-    - npm install
+    - npm ci
     - npm test -- --coverage
-    - npm run codecov -- -F client
+    - npm run codecov
 - name: graphql
-  depends_on: [detect-changed-folders]
   image: node:10.16.3
   environment:
     CODECOV_TOKEN:
       from_secret: codecov_token
   commands:
     - cd graphql
-    - if ../scripts/shouldNotRun.sh; then exit 0; fi
-    - npm install
+    - npm ci
     - npm test -- --coverage
-    - npm run codecov -- -F graphql
+    - npm run codecov
 
 services:
   - name: database
