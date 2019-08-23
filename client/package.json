@@ -107,7 +107,8 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/serviceWorker.ts",
-      "!src/**/*.d.ts"
+      "!src/**/*.d.ts",
+      "!src/config/env.ts"
     ],
     "setupFiles": [
       "react-app-polyfill/jsdom"
