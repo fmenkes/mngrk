@@ -3,7 +3,6 @@ coverage:
     project:
       default:
         target: 90%
-        threshold: null
       api:
         flags: api
         target: 90%
@@ -16,10 +15,10 @@ coverage:
 flags:
   client:
     paths:
-      - client/
+      - client/src
   graphql:
     paths:
-      - graphql/
+      - graphql/src
   api:
     paths:
-      - api/
+      - api/src

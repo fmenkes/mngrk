@@ -1,7 +1,17 @@
 {
-  "name": "client",
+  "name": "mngrka-client",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fmenkes/mngrka.git"
+  },
+  "author": "fmenkes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fmenkes/mngrka/issues"
+  },
+  "homepage": "https://github.com/fmenkes/mngrka#readme",
   "dependencies": {
     "@apollo/react-testing": "^3.0.1",
     "@babel/core": "7.4.3",
@@ -79,7 +89,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "codecov": "codecov"
+    "codecov": "codecov -F client"
   },
   "browserslist": {
     "production": [

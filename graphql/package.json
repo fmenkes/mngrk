@@ -1,17 +1,27 @@
 {
-  "name": "graphql-server",
+  "name": "mngrka-graphql",
+  "private": true,
   "version": "0.1.0",
   "description": "",
   "main": "index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fmenkes/mngrka.git"
+  },
+  "author": "fmenkes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fmenkes/mngrka/issues"
+  },
+  "homepage": "https://github.com/fmenkes/mngrka#readme",
   "scripts": {
     "test": "jest",
     "generate": "graphql-codegen",
     "dev": "nodemon --watch 'src/**/*' -e ts,tsx,graphql --exec ts-node ./src/index.ts",
     "start": "node dist/bundle.js",
     "build": "webpack",
-    "codecov": "codecov"
+    "codecov": "codecov -F graphql"
   },
-  "author": "fmenkes",
   "dependencies": {
     "apollo-datasource": "^0.6.1",
     "apollo-datasource-rest": "^0.6.1",
