@@ -44,7 +44,7 @@
     "codecov": "^3.5.0",
     "copy-webpack-plugin": "^5.0.4",
     "jest": "^24.9.0",
-    "nodemon": "^1.19.1",
+    "nodemon": "^1.19.2",
     "supertest": "^4.0.2",
     "ts-jest": "^24.0.2",
     "ts-loader": "^6.0.4",
