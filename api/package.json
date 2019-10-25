@@ -22,7 +22,7 @@
   "homepage": "https://github.com/fmenkes/mngrka#readme",
   "dependencies": {
     "@koa/cors": "^3.0.0",
-    "config": "^3.2.2",
+    "config": "^3.2.4",
     "dotenv": "8.1.0",
     "js-yaml": "^3.13.1",
     "koa": "^2.7.0",
