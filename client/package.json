@@ -14,7 +14,7 @@
   "homepage": "https://github.com/fmenkes/mngrka#readme",
   "dependencies": {
     "@apollo/react-testing": "^3.0.1",
-    "@babel/core": "7.5.5",
+    "@babel/core": "7.7.2",
     "@svgr/webpack": "4.3.2",
     "@testing-library/jest-dom": "^4.0.1",
     "@testing-library/react": "^9.1.3",
