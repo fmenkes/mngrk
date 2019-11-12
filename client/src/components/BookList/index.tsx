@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { Query, QueryResult } from 'react-apollo';
+import React from 'react';
+import { useQuery } from 'react-apollo-hooks';
 import gql from 'graphql-tag';
 import { FixedSizeList } from 'react-window';
 import BookRenderer from './BookRenderer';
@@ -20,27 +20,26 @@ export const BOOK_QUERY = gql`
   }
 `;
 
-const BookList = () => (
-  <Query query={BOOK_QUERY}>
-    {({ loading, error, data }: QueryResult) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>{error.message}</p>;
-      return (
-        <Fragment>
-          <BookListHeader />
-          <FixedSizeList
-            height={800}
-            itemCount={data.books.length}
-            itemSize={35}
-            width="75%"
-            itemData={data.books}
-          >
-            {BookRenderer}
-          </FixedSizeList>
-        </Fragment>
-      );
-    }}
-  </Query>
-);
+const BookList = () => {
+  const { data, loading, error } = useQuery(BOOK_QUERY);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error.message}</p>;
+  const { books } = data;
+
+  return (
+    <>
+      <BookListHeader />
+      <FixedSizeList
+        height={800}
+        itemCount={books.length}
+        itemSize={35}
+        width="75%"
+        itemData={books}
+      >
+        {BookRenderer}
+      </FixedSizeList>
+    </>
+  );
+};
 
 export default BookList;
